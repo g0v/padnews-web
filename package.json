@@ -1,0 +1,24 @@
+{
+  "name": "padnews-web",
+  "version": "0.0.1",
+  "description": "A web client for padnews.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:caasi/padnews-web.git"
+  },
+  "keywords": [
+    "padnews",
+    "node",
+    "web"
+  ],
+  "author": "caasi Huang",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/caasi/padnews-web/issues"
+  },
+  "homepage": "https://github.com/caasi/padnews-web"
+}
