@@ -14,7 +14,10 @@ x$.get('/', function(req, res){
   });
 });
 x$.get('/json', function(req, res){
-  return res.json(pad.news);
+  return res.json({
+    total: pad.news.length,
+    latest: pad.news.slice(pad.news.length - 42)
+  });
 });
 server = require('http').Server(app);
 io = require('socket.io').listen(server);

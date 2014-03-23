@@ -10,7 +10,10 @@ app
   #..use express.static pub
   ..set 'view engine' \jade
   ..get '/'     (req, res) -> res.render \index news: pad.news
-  ..get '/json' (req, res) -> res.json pad.news
+  ..get '/json' (req, res) ->
+    res.json do
+      total: pad.news.length
+      latest: pad.news.slice pad.news.length - 42
 server  = require(\http).Server app
 io      = require(\socket.io).listen server
 
