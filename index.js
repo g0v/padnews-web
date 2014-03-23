@@ -14,10 +14,14 @@ x$.get('/', function(req, res){
   });
 });
 x$.get('/json', function(req, res){
-  return res.json({
+  var x$;
+  x$ = res;
+  x$.setHeader('Access-Control-Allow-Origin', '*');
+  x$.json({
     total: pad.news.length,
     latest: pad.news.slice(pad.news.length - 42)
   });
+  return x$;
 });
 server = require('http').Server(app);
 io = require('socket.io').listen(server);
