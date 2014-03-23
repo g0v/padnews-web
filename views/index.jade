@@ -34,7 +34,7 @@ html
 
         $sec = $('<section class="entry"><span class="time">' + data.value.time + '</span><span class="location">[' + data.value.location + ']</span></section>')
         for(j in data.value.content)
-          $sec.append('<p>' + data.value.content[j] + '</p>')
+          $sec.append('<p class="content">' + data.value.content[j] + '</p>')
 
         i = +data.path.substr(1);
 
