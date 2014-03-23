@@ -2,6 +2,19 @@ doctype html
 html
   head
     title Padnews
+    style.
+      body {
+        background: #16161D;
+      }
+      .time {
+        color: magenta;
+      }
+      .location {
+        color: green;
+      }
+      .content {
+        color: white;
+      }
   body
     - for(i=news.length-1; entry=news[i]; --i)
       section.entry
