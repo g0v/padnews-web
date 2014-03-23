@@ -14,14 +14,22 @@ app
 server  = require(\http).Server app
 io      = require(\socket.io).listen server
 
-pad.run do
-  10000
-  (event, data, i, diff) ->
+# wait for awhile, lame hack
+later = !->
+
+setTimeout ->
+  later := (event, data, i, diff) !->
     patch =
       op: if event is \create then \add else \replace
       path: "/#i"
       value: data
     io.sockets.emit \patch, patch
+, 30000
+
+pad.run do
+  10000
+  (event, data, i, diff) ->
+    later event, data, i, diff
 
 io.sockets.on \connection (socket) ->
   socket.emit \msg 'http://g0v.today'
