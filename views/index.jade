@@ -1,0 +1,11 @@
+doctype html
+html
+  head
+    title Padnews
+  body
+    - for(i=news.length-1; entry=news[i]; --i)
+      section.entry
+        span.time #{entry.time}
+        span.location [#{entry.location}]
+      - for(j=entry.content.length-1; p=entry.content[j]; --j)
+        p.content #{p}
