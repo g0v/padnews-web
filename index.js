@@ -30,4 +30,4 @@ pad.run(10000, function(event, data, i, diff){
 io.sockets.on('connection', function(socket){
   return socket.emit('msg', 'http://g0v.today');
 });
-server.listen(8888);
+server.listen(process.env.PORT) || 8888;

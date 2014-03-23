@@ -26,4 +26,4 @@ pad.run do
 io.sockets.on \connection (socket) ->
   socket.emit \msg 'http://g0v.today'
 
-server.listen 8888
+server.listen process.env.PORT or 8888
