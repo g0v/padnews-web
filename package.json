@@ -1,6 +1,6 @@
 {
   "name": "padnews-web",
-  "version": "0.1.2",
+  "version": "0.1.4",
   "description": "A web client for padnews.",
   "main": "index.js",
   "scripts": {
@@ -8,19 +8,19 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:caasi/padnews-web.git"
+    "url": "git@github.com:g0v/padnews-web.git"
   },
   "keywords": [
     "padnews",
-    "node",
+    "socket.io",
     "web"
   ],
   "author": "caasi Huang",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/caasi/padnews-web/issues"
+    "url": "https://github.com/g0v/padnews-web/issues"
   },
-  "homepage": "https://github.com/caasi/padnews-web",
+  "homepage": "https://github.com/g0v/padnews-web",
   "dependencies": {
     "padnews": "git://github.com/g0v/padnews",
     "express": "^3.5.0",

@@ -17,26 +17,19 @@ app
         total: pad.news.length
         latest: pad.news.slice pad.news.length - 42
 server  = require(\http).Server app
-io      = require(\socket.io).listen server
-
-# wait for awhile, lame hack
-later = !->
-
-setTimeout ->
-  later := (event, data, i, diff) !->
-    patch =
-      op: if event is \create then \add else \replace
-      path: "/#i"
-      value: data
-    io.sockets.emit \patch, patch
-, 30000
+(io     = require(\socket.io).listen server)
+  ..set 'log level' 1
+  ..sockets.on \connection (socket) ->
+    socket.emit \msg 'http://g0v.today'
 
 pad.run do
   10000
   (event, data, i, diff) ->
-    later event, data, i, diff
-
-io.sockets.on \connection (socket) ->
-  socket.emit \msg 'http://g0v.today'
-
-server.listen process.env.PORT or 8888
+    if event is \ready
+      server.listen process.env.PORT or 5000
+    else
+      patch =
+        op: if event is \create then \add else \replace
+        path: "/#i"
+        value: data
+      io.sockets.emit \patch, patch
