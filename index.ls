@@ -1,11 +1,10 @@
 Padnews = require \padnews
-pad = new Padnews \sgyfCRGiBZC \g0v
+pad = new Padnews \FRzDUBto4Vj
 
 pub = './public'
 
 require! express
-app     = express!
-app
+(app     = express!)
   ..use app.router
   #..use express.static pub
   ..set 'view engine' \jade
