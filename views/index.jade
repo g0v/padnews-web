@@ -28,7 +28,7 @@ html(lang="zh_tw")
       section.entry
         span.time #{entry.time}
         span.location [#{entry.location}]
-        - for(j=entry.content.length-1; p=entry.content[j]; --j)
+        for p in entry.content
           p.content #{p}
     script(src="//code.jquery.com/jquery-2.1.0.min.js")
     script(src="/socket.io/socket.io.js")
