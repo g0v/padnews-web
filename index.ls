@@ -13,13 +13,19 @@ require! express
   ..use app.router
   #..use express.static pub
   ..set 'view engine' \jade
-  ..get '/'     (req, res) -> res.render \index news: pad.news
-  ..get '/json' (req, res) ->
+  ..get '/'         (req, res) -> res.render \index news: pad.news
+  ..get '/json/all' (req, res) ->
+    res
+      ..setHeader \Access-Control-Allow-Origin '*'
+      ..json pad.news
+  ..get '/json'     (req, res) ->
     res
       ..setHeader \Access-Control-Allow-Origin '*'
       ..json do
         total: pad.news.length
         latest: pad.news.slice pad.news.length - 42
+  ..get '/json/:id(\\d+)' (req, res) ->
+    res.json pad.news[parseInt req.params.id, 10]
 server  = require(\http).Server app
 (io     = require(\socket.io).listen server)
   ..set 'log level' 1

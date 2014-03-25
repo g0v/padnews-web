@@ -18,6 +18,13 @@ x$.get('/', function(req, res){
     news: pad.news
   });
 });
+x$.get('/json/all', function(req, res){
+  var x$;
+  x$ = res;
+  x$.setHeader('Access-Control-Allow-Origin', '*');
+  x$.json(pad.news);
+  return x$;
+});
 x$.get('/json', function(req, res){
   var x$;
   x$ = res;
@@ -27,6 +34,9 @@ x$.get('/json', function(req, res){
     latest: pad.news.slice(pad.news.length - 42)
   });
   return x$;
+});
+x$.get('/json/:id(\\d+)', function(req, res){
+  return res.json(pad.news[parseInt(req.params.id, 10)]);
 });
 server = require('http').Server(app);
 y$ = io = require('socket.io').listen(server);
