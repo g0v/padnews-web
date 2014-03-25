@@ -47,9 +47,6 @@ x$.get('/json/:id(\\d+)', function(req, res){
 server = require('http').Server(app);
 y$ = io = require('socket.io').listen(server);
 y$.set('log level', 1);
-y$.sockets.on('connection', function(socket){
-  return socket.emit('msg', 'http://g0v.today');
-});
 opFromEvent = {
   create: 'add',
   update: 'replace',

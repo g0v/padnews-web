@@ -32,8 +32,6 @@ require! express
 server  = require(\http).Server app
 (io     = require(\socket.io).listen server)
   ..set 'log level' 1
-  ..sockets.on \connection (socket) ->
-    socket.emit \msg 'http://g0v.today'
 
 op-from-event =
   create: \add
