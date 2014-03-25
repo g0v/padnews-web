@@ -1,30 +1,27 @@
 doctype html
-html
+html(lang="zh_tw")
   head
     title Padnews
-    link(rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/normalize/3.0.0/normalize.min.css")
+    link(rel="stylesheet" href="/css/han.css")
     style.
       body {
         font-family: "Fira Sans OT", "XinGothic-Citicpress", "XinGothic Citicpress", "Lantinghei TC", "Hiragino Kaku Gothic Pro", "Apple LiGothic", "Heiti TC", "LiHei Pro", "Microsoft YaHei", "微軟正黑體", "文泉驿正黑", sans-serif;
-        background: #16161D;
-      }
-      .entry {
-        margin-bottom: 0.5em;
+        background: url("/img/g0v-tiny.png") #16161D right top no-repeat;
       }
       .time, .location {
         font-weight: bold;
       }
       .time {
         color: #f60;
-        margin-right: 0.5em;
+      }
+      .time:after {
+        content: ' ';
       }
       .location {
         color: #f90;
       }
       .content {
         color: white;
-        margin-top: 0.5em;
-        line-height: 1.5em;
       }
   body
     - for(i=news.length-1; entry=news[i]; --i)

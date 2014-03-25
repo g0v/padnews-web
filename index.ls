@@ -11,7 +11,7 @@ pub = './public'
 require! express
 (app     = express!)
   ..use app.router
-  #..use express.static pub
+  ..use express.static pub
   ..set 'view engine' \jade
   ..get '/'         (req, res) -> res.render \index news: pad.news
   ..get '/json/all' (req, res) ->

@@ -12,6 +12,7 @@ pub = './public';
 express = require('express');
 x$ = app = express();
 x$.use(app.router);
+x$.use(express['static'](pub));
 x$.set('view engine', 'jade');
 x$.get('/', function(req, res){
   return res.render('index', {
