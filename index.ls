@@ -29,9 +29,17 @@ require! express
     res
       ..setHeader \Access-Control-Allow-Origin '*'
       ..json entry, if entry then 200 else 404
-server  = require(\http).Server app
-(io     = require(\socket.io).listen server)
+server = require(\http).Server app
+
+connections = 0
+(io = require(\socket.io).listen server)
   ..set 'log level' 1
+  ..on \connection (socket) !->
+    connections := connections + 1
+    console.log "online: #connections"
+    socket.on \disconnect !->
+      connections := connections - 1
+      console.log "online: #connections"
 
 op-from-event =
   create: \add

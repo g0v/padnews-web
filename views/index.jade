@@ -34,9 +34,6 @@ html(lang="zh_tw")
     script(src="/socket.io/socket.io.js")
     script.
       var socket = io.connect('/');
-      socket.on('msg', function(data) {
-        console.log(data);
-      });
       socket.on('patch', function(data) {
         var $sec, i;
 
