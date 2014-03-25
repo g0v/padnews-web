@@ -31,15 +31,10 @@ require! express
       ..json entry, if entry then 200 else 404
 server = require(\http).Server app
 
-connections = 0
 (io = require(\socket.io).listen server)
   ..set 'log level' 1
   ..on \connection (socket) !->
-    connections := connections + 1
-    console.log "online: #connections"
-    socket.on \disconnect !->
-      connections := connections - 1
-      console.log "online: #connections"
+    socket.emit \welcome
 
 op-from-event =
   create: \add
