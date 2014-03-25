@@ -25,12 +25,20 @@ require! express
         total: pad.news.length
         latest: pad.news.slice pad.news.length - 42
   ..get '/json/:id(\\d+)' (req, res) ->
-    res.json pad.news[parseInt req.params.id, 10]
+    entry = pad.news[parseInt req.params.id, 10]
+    res
+      ..setHeader \Access-Control-Allow-Origin '*'
+      ..json entry, if entry then 200 else 404
 server  = require(\http).Server app
 (io     = require(\socket.io).listen server)
   ..set 'log level' 1
   ..sockets.on \connection (socket) ->
     socket.emit \msg 'http://g0v.today'
+
+op-from-event =
+  create: \add
+  update: \replace
+  remove: \remove
 
 pad.run do
   10000
@@ -39,7 +47,7 @@ pad.run do
       server.listen process.env.PORT or 5000
     else
       patch =
-        op: if event is \create then \add else \replace
+        op: op-from-event[event]
         path: "/#i"
         value: data
       io.sockets.emit \patch, patch
