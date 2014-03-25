@@ -8,6 +8,9 @@ pad = new Padnews \FRzDUBto4Vj
 
 pub = './public'
 
+status =
+  online: 0
+
 require! express
 (app     = express!)
   ..use app.router
@@ -29,17 +32,18 @@ require! express
     res
       ..setHeader \Access-Control-Allow-Origin '*'
       ..json entry, if entry then 200 else 404
+  ..get '/json/status' (req, res) ->
+    res
+      ..setHeader \Access-Control-Allow-Origin '*'
+      ..json status
 server = require(\http).Server app
 
-counter = 0
 (io = require(\socket.io).listen server)
   ..set 'log level' 1
   ..on \connection (socket) !->
-    counter := counter + 1
-    console.log "online: #counter"
+    status.online := status.online + 1
     socket.on \disconnect !->
-      counter := counter - 1
-      console.log "online: #counter"
+      status.online := status.online - 1
 
 op-from-event =
   create: \add
