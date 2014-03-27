@@ -40,11 +40,11 @@ html(lang="zh_tw")
       section.entry
         span.time #{entry.time}
         span.location [#{entry.location}]
-        //if i >= news.length-20
-        for p in entry.content
-          p.content #{p}
-        //else
-          a.empty(id="#{i}" href="#") ...
+        if i >= news.length-20
+          for p in entry.content
+            p.content #{p}
+        else
+          a.empty(href="/#{i}") ...
     script(src="//code.jquery.com/jquery-2.1.0.min.js")
     script(src="/socket.io/socket.io.js")
     script.
@@ -74,7 +74,7 @@ html(lang="zh_tw")
         var $that = $(this);
         e.preventDefault();
         $.ajax({
-          url: "/json/" + $that.attr("id"),
+          url: "/json" + $that.attr("href"),
           dataType: "json",
           success: function (data, status) {
             var i;
