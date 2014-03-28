@@ -1,13 +1,13 @@
 var socket;
 socket = io.connect('/');
 socket.on('patch\'', function(data){
-  var $sec, i$, ref$, len$, p, i;
-  $sec = $("<section class=\"entry\"><span class=\"time\">" + data.value.time + "</span><span class=\"location\">[" + data.value.location + "]</span></section>");
+  var i, $sec, i$, ref$, len$, p;
+  i = +data.path.substr(1);
+  $sec = $("<section class=\"entry\"><span class=\"time\"><a href=\"/" + i + "\">" + data.value.time + "</a></span><span class=\"location\">[" + data.value.location + "]</span></section>");
   for (i$ = 0, len$ = (ref$ = data.value.content).length; i$ < len$; ++i$) {
     p = ref$[i$];
     $sec.append("<p class=\"content\">" + p + "</p>");
   }
-  i = +data.path.substr(1);
   switch (data.op) {
   case 'add':
     return $('body').prepend($sec);

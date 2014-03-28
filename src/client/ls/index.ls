@@ -1,10 +1,11 @@
 socket = io.connect '/'
 socket.on \patch' (data) ->
-  $sec = $ "<section class=\"entry\"><span class=\"time\">#{data.value.time}</span><span class=\"location\">[#{data.value.location}]</span></section>"
+  i = +data.path.substr 1
+
+  $sec = $ "<section class=\"entry\"><span class=\"time\"><a href=\"/#i\">#{data.value.time}</a></span><span class=\"location\">[#{data.value.location}]</span></section>"
   for p in data.value.content
     $sec.append "<p class=\"content\">#p</p>"
 
-  i = +data.path.substr 1
   switch data.op
   | \add     => $ \body   .prepend $sec
   | \replace => $ \.entry .eq(-i-1)replaceWith $sec
