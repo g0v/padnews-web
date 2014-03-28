@@ -50,9 +50,9 @@ op-from-event =
   update: \replace
   remove: \remove
 
-pad.run do
-  10000
-  (event, data, i, diff) ->
+pad
+  ..delay = 10000
+  ..on-msg = (event, data, i, diff) ->
     if event is \ready
       server.listen process.env.PORT or 5000
     else
@@ -61,3 +61,4 @@ pad.run do
         path: "/#i"
         value: data
       io.sockets.emit \patch, patch
+  ..run!
