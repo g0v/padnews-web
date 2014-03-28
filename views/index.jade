@@ -7,13 +7,14 @@ html(lang="zh_tw")
   body
     - for(i=news.length-1; entry=news[i]; --i)
       section.entry
-        span.time #{entry.time}
+        span.time
+          a(href="/#{i}") #{entry.time}
         span.location [#{entry.location}]
         if i >= news.length-20
           for p in entry.content
             p.content #{p}
         else
-          a.empty(href="/#{i}") ...
+          a.empty(href="/#{i}") +
     script(src="//code.jquery.com/jquery-2.1.0.min.js")
     script(src="/socket.io/socket.io.js")
     script(src="/js/index.js")

@@ -16,12 +16,15 @@ require! express
   ..use app.router
   ..use express.static pub
   ..set 'view engine' \jade
-  ..get '/'         (req, res) -> res.render \index news: pad.news
+  ..get '/' (req, res) ->
+    res.render \index news: pad.news
+  ..get '/:id(\\d+)' (req, res) ->
+    res.render \entry entry: pad.news[parseInt req.params.id, 10]
   ..get '/json/all' (req, res) ->
     res
       ..setHeader \Access-Control-Allow-Origin '*'
       ..json pad.news
-  ..get '/json'     (req, res) ->
+  ..get '/json' (req, res) ->
     res
       ..setHeader \Access-Control-Allow-Origin '*'
       ..json do

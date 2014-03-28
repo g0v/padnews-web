@@ -11,12 +11,12 @@ config =
 
 gulp.task \app ->
   gulp.src "#{config.server.source}/index.ls"
-    .pipe gulp-livescript!
+    .pipe gulp-livescript bare: true
     .pipe gulp.dest "#{config.server.build}/"
 
 gulp.task \js ->
   gulp.src "#{config.client.source}/ls/index.ls"
-    .pipe gulp-livescript!
+    .pipe gulp-livescript bare: true
     .pipe gulp.dest "#{config.client.build}/js/"
 
 gulp.task \css ->

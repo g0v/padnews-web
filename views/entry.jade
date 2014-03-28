@@ -1,0 +1,12 @@
+doctype html
+html(lang="zh_tw")
+  head
+    title Padnews | #{entry.time} [#{entry.location}] #{entry.content[0].substr(0,16) + (entry.content[0].length>16 ? '...' : '')}
+    link(rel="stylesheet" href="/css/han.css")
+    link(rel="stylesheet" href="/css/main.css")
+  body
+    section.entry
+      span.time #{entry.time}
+      span.location [#{entry.location}]
+      for p in entry.content
+        p.content #{p}
