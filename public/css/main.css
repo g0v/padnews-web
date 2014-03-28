@@ -1,6 +1,11 @@
 body {
   font-family: "Fira Sans OT", "XinGothic-Citicpress", "XinGothic Citicpress", "Lantinghei TC", "Hiragino Kaku Gothic Pro", "Apple LiGothic", "Heiti TC", "LiHei Pro", "Microsoft YaHei", "微軟正黑體", "文泉驿正黑", sans-serif;
   background: url("/img/g0v-tiny.png") #16161d fixed right bottom no-repeat;
+  padding: 1em;
+  line-height: 1.4;
+}
+.entry {
+  margin-bottom: 3em;
 }
 .time,
 .location {
@@ -22,7 +27,8 @@ body {
   color: #f90;
 }
 .content {
-  color: #fff;
+  color: #ddd;
+  margin-top: 0.2em;
 }
 .empty {
   color: #999;
