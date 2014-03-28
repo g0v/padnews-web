@@ -2,6 +2,7 @@ doctype html
 html(lang="zh-tw")
   head
     title Padnews | #{entry.time} [#{entry.location}] #{entry.content[0].substr(0,16) + (entry.content[0].length>16 ? '...' : '')}
+    link(rel="shortcut icon" href="/img/favicon.png")
     link(rel="stylesheet" href="/css/han.css")
     link(rel="stylesheet" href="/css/main.css")
   body
