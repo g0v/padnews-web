@@ -6,7 +6,8 @@ html(lang="zh_tw")
     link(rel="stylesheet" href="/css/main.css")
   body
     section.entry
-      span.time #{entry.time}
+      span.time
+        a(href="/") #{entry.time}
       span.location [#{entry.location}]
       for p in entry.content
         p.content #{p}
