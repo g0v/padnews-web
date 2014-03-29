@@ -1,6 +1,6 @@
 {
   "name": "padnews-web",
-  "version": "0.1.11",
+  "version": "0.1.12",
   "description": "A web client for padnews.",
   "main": "index.js",
   "scripts": {
