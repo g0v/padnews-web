@@ -22,3 +22,8 @@ $ \.empty .click (e) ->
       for p in data.content
         $that.before "<p class=\"content\">#p</p>"
       $that.remove!
+
+anchor = window.location.hash.replace '#', ''
+if anchor
+  t = $ "a[href$='"+anchor+"']" .offset() .top
+  $ "body" .animate {scrollTop: t}, 1000;
