@@ -23,7 +23,7 @@ $ \.empty .click (e) ->
         $that.before "<p class=\"content\">#p</p>"
       $that.remove!
 
-anchor = window.location.hash.replace '#', ''
-if anchor
-  t = $ "a[href$='"+anchor+"']" .offset() .top
-  $ "body" .animate {scrollTop: t}, 1000;
+anchor = window.location.hash
+if anchor isnt \#
+  t = $ anchor .offset!top
+  $ "body,html" .animate {scrollTop: t}, 1000

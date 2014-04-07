@@ -1,4 +1,4 @@
-var socket;
+var socket, anchor, t;
 socket = io.connect('/');
 socket.on('patch\'', function(data){
   var i, $sec, i$, ref$, len$, p;
@@ -37,3 +37,10 @@ $('.empty').click(function(e){
     }
   });
 });
+anchor = window.location.hash;
+if (anchor !== '#') {
+  t = $(anchor).offset().top;
+  $("body,html").animate({
+    scrollTop: t
+  }, 1000);
+}

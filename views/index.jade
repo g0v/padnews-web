@@ -7,7 +7,7 @@ html(lang="zh-tw")
     link(rel="stylesheet" href="/css/main.css")
   body
     - for(i=news.length-1; entry=news[i]; --i)
-      section.entry
+      section.entry(id="#{i}")
         span.time
           a(href="/#{i}") #{entry.time}
         span.location [#{entry.location}]
