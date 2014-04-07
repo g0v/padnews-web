@@ -1,4 +1,4 @@
-var socket, anchor, t;
+var socket, onHashchange;
 socket = io.connect('/');
 socket.on('patch\'', function(data){
   var i, $sec, i$, ref$, len$, p;
@@ -20,7 +20,9 @@ socket.on('patch\'', function(data){
 $('.empty').click(function(e){
   var $that;
   $that = $(this);
-  e.preventDefault();
+  if (e != null) {
+    e.preventDefault();
+  }
   return $.ajax({
     url: "/json" + $that.attr('href'),
     dataType: 'json',
@@ -37,10 +39,16 @@ $('.empty').click(function(e){
     }
   });
 });
-anchor = window.location.hash;
-if (anchor !== '#') {
-  t = $(anchor).offset().top;
-  $("body,html").animate({
-    scrollTop: t
-  }, 1000);
-}
+(onHashchange = function(){
+  var anchor, $entry, t;
+  anchor = window.location.hash;
+  if (anchor !== '#') {
+    $entry = $(anchor);
+    $entry.find('.empty').click();
+    t = $entry.offset().top;
+    return $("body,html").animate({
+      scrollTop: t
+    }, 1000);
+  }
+})();
+$(window).on('hashchange', onHashchange);

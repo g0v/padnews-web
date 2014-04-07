@@ -13,7 +13,7 @@ socket.on \patch' (data) ->
 
 $ \.empty .click (e) ->
   $that = $ this
-  e.preventDefault!
+  e?preventDefault!
   $.ajax do
     url:      "/json#{$that.attr \href}",
     dataType: \json
@@ -23,7 +23,12 @@ $ \.empty .click (e) ->
         $that.before "<p class=\"content\">#p</p>"
       $that.remove!
 
-anchor = window.location.hash
-if anchor isnt \#
-  t = $ anchor .offset!top
-  $ "body,html" .animate {scrollTop: t}, 1000
+do on-hashchange = ->
+  anchor = window.location.hash
+  if anchor isnt \#
+    $entry = $ anchor
+    $entry.find \.empty .click!
+    t = $entry.offset!top
+    $ "body,html" .animate {scrollTop: t}, 1000
+
+$(window).on \hashchange on-hashchange
