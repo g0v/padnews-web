@@ -4,7 +4,7 @@
   "description": "A web client for padnews.",
   "main": "index.js",
   "scripts": {
-    "start": "gulp --require LiveScript",
+    "start": "gulp",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -32,7 +32,7 @@
   "devDependencies": {
     "gulp-livescript": "^0.2.1",
     "gulp-stylus": "^0.1.0",
-    "gulp": "^3.6.0",
+    "gulp": "^3.7.0",
     "LiveScript": "^1.2.0"
   }
 }
