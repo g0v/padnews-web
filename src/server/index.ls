@@ -1,8 +1,3 @@
-if process.env.NODETIME_ACCOUNT_KEY
-  require \nodetime .profile do
-    accountKey: process.env.NODETIME_ACCOUNT_KEY
-    appName: \congress-text-live
-
 Padnews = require \padnews
 pad = new Padnews \FRzDUBto4Vj
 

@@ -23,11 +23,10 @@
   },
   "homepage": "https://github.com/g0v/padnews-web",
   "dependencies": {
-    "padnews": "git://github.com/g0v/padnews",
+    "padnews": "0.1.13",
     "express": "^3.5.0",
     "socket.io": "^0.9.16",
-    "jade": "^1.3.0",
-    "nodetime": "^0.8.15"
+    "jade": "^1.3.0"
   },
   "devDependencies": {
     "gulp-livescript": "^0.2.1",
