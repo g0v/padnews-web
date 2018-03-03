@@ -1,10 +1,4 @@
 var Padnews, pad, pub, status, express, x$, app, server, y$, io, opFromEvent, z$;
-if (process.env.NODETIME_ACCOUNT_KEY) {
-  require('nodetime').profile({
-    accountKey: process.env.NODETIME_ACCOUNT_KEY,
-    appName: 'congress-text-live'
-  });
-}
 Padnews = require('padnews');
 pad = new Padnews('FRzDUBto4Vj');
 pub = './public';
